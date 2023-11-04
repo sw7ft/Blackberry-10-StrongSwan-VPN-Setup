@@ -83,6 +83,17 @@ sudo apt-get install iptables-persistent
 
 ```
 
+### Revised IP Table Firerules for a connection with browsing 
+
+```
+sudo iptables -A INPUT -p esp -j ACCEPT
+sudo iptables -I POSTROUTING -t nat -o ens34 -j MASQUERADE
+sudo iptables -I INPUT -p udp --dport 500 -j ACCEPT
+sudo iptables -I INPUT -p udp --dport 4500 -j ACCEPT
+
+```
+
+
 ### Restart Strong Swan
 
 ```
